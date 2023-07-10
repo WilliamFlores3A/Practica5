@@ -33,17 +33,17 @@ export class inversionistaService {
     }
   }
 
-  async findAll(): Promise<Inversionista[]> {
+  async findAll(): Promise<inversionista[]> {
     return await this.inversionistaRepository.find({});
   }
 
-  async findOne(id: string): Promise<Inversionista> {
+  async findOne(id: string): Promise<inversionista> {
     const inversionista = await this.inversionistaRepository.findOneBy({ id });
     if (!inversionista) throw new NotFoundException(`Inversionista ${id} not found`);
     return inversionista;
   }
 
-  async findOneByName(name: string): Promise<Inversionista> {
+  async findOneByName(name: string): Promise<inversionista> {
     const inversionista = await this.inversionistaRepository.findOneBy({ name });
     if (!inversionista) throw new NotFoundException(`Inversionista ${name} not found`);
     return inversionista;
@@ -51,8 +51,8 @@ export class inversionistaService {
 
   async update(
     id: string,
-    updateInversionistaDto: UpdateInversionistaDto,
-  ): Promise<Inversionista> {
+    updateInversionistaDto: UpdateinversionistaDto,
+  ): Promise<inversionista> {
     const inversionista = await this.inversionistaRepository.preload({
       id: id,
       ...updateInversionistaDto,
